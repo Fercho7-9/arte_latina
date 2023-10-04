@@ -1,0 +1,17 @@
+.boton-top {
+    background-color: var(--naranja);
+    border-radius: 50%;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 1rem;
+    transition: all .3s ease-in-out;
+}
+
+.boton-top img {
+    height: 32px;
+    width: 32px;
+}
+
+.boton-top:hover {
+    background-color: #c76f03;
+}

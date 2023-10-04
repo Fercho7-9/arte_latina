@@ -1,0 +1,68 @@
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M5QW2BF');</script>
+    <!-- End Google Tag Manager -->
+<section>
+    <app-navbar></app-navbar>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5QW2BF"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="container-home">
+        <h1>Proyectos nuevos</h1>
+        <h2>Lista de Proyectos</h2>
+        <div class="row search-bar-container">
+            <input class="search-box" style="width: 600px;" [(ngModel)]="titleFilter" type="text" value="valor">
+            <button class="blue-button" (click)="filter()"><svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M20 20L15.514 15.506M18 9.5C18 11.7543 17.1045 13.9163 15.5104 15.5104C13.9163 17.1045 11.7543 18 9.5 18C7.24566 18 5.08365 17.1045 3.48959 15.5104C1.89553 13.9163 1 11.7543 1 9.5C1 7.24566 1.89553 5.08365 3.48959 3.48959C5.08365 1.89553 7.24566 1 9.5 1C11.7543 1 13.9163 1.89553 15.5104 3.48959C17.1045 5.08365 18 7.24566 18 9.5V9.5Z"
+                    stroke="white" stroke-width="2" stroke-linecap="round" />
+            </svg>
+</button>
+        </div>
+        <div class="row">
+            <p>
+                <select class="sel" name="tipo" (change)="filter()" [(ngModel)]="tipoSeleccionado">
+                <option value="">Tipo de proyecto</option>
+                <option class="sel" [value]="tipo" *ngFor="let tipo of listaTipos">{{tipo}}</option>
+                </select>
+            </p>
+            <p>
+                <select class="sel" name="gp" (change)="filter()" [(ngModel)]="gpSeleccionado">
+                    <option value="">GP/Practicum</option>
+                <option class="sel" [value]="gp" *ngFor="let gp of listaGp">{{gp}}</option>
+                </select>
+            </p>
+            <p>
+                <select class="sel" name="carrera" (change)="filter()" [(ngModel)]="carreraSeleccionada">
+                <option value="">Carrera</option>
+                <option class="sel" [value]="carrera" *ngFor="let carrera of listaCarreras">{{carrera}}</option>
+                </select>
+            </p>
+        </div>
+        <div class="table-container">
+            <table id="projects-table">
+                <tr>
+                    <th>Título del proyecto</th>
+                    <th>Tipo de proyecto</th>
+                    <th>Carrera</th>
+                    <th>GP</th>
+                    <th>Descripción</th>
+                </tr>
+                <tr *ngFor="let project of results">
+                    <td>{{project.titulo}}</td>
+                    <td>{{project.tipoProyecto}}</td>
+                    <td>{{project.carrera}}</td>
+                    <td>{{project.gp}}</td>
+                    <td>{{project.descripcion}}</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <app-footer></app-footer>
+</section>

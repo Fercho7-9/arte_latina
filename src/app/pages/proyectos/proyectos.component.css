@@ -1,0 +1,62 @@
+.proyectos {
+  /* background-color: var(--primario); */
+  position: relative;
+}
+
+.footer {
+  padding-top: 125px;
+  /* background-color: var(--primario); */
+  position: relative;
+}
+.my-container {
+  display: flex;
+  padding: 130px;
+  padding-top: 70px;
+  flex-direction: column;
+}
+.my-container h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #104d73 ;
+}
+.my-container h6 {
+  font-size: 20px;
+  font-weight: 200;
+  color: #000000;
+  max-width: 50%;
+  line-height: 30px;
+}
+.card-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  row-gap: 38px;
+  width: 100%;
+  padding-top: 46px;
+  justify-items: center;
+}
+.item {
+  display: inline-grid;
+  width: 385px;
+}
+@media (max-width: 1420px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 1020px) {
+  .card-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .my-container h6 {
+    font-size: 16px;
+    max-width: 100%;
+  }
+  .my-container {
+    padding: 20px;
+  }
+}
+@media (max-width: 500px) {
+  .item {
+    width: 300px;
+  }
+}

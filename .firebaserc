@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "staging": "liid-utpl-9f95f",
+    "production": "liid-utpl-prod",
+    "default": "liid-utpl-9f95f",
+    "liid-utpl": "liid-utpl-prod"
+  },
+  "targets": {}
+}

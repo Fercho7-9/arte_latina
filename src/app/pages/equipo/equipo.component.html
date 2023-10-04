@@ -1,0 +1,34 @@
+<section class="equipo">
+  <div class="my-container">
+    <h1>Equipo</h1>
+    <h6>
+      En LiiD hacemos avanzar la educación, enseñanza e investigación. Apoyamos los proyectos del laboratorio con el
+      trabajo conjunto de estudiantes de todas las carreras universitarias. El objetivo es desarrollar soluciones
+      innovadoras para los retos del mundo real.
+    </h6>
+
+    <div *ngFor="let dep of dependencias">
+      <!-- Agregamos un botón para manejar el despliegue -->
+      <button (click)="toggleDep(dep)" class="dep-toggle">{{ dep }}</button>
+
+      <!-- Usamos *ngIf para mostrar el card-container solo si la dependencia está seleccionada -->
+      <div class="card-container" *ngIf="dep === selectedDep">
+        <ng-container *ngFor="let team of getTeamByDependency(dep)">
+          <div class="item">
+            <box-card-team nombre={{team.nombre}} correo={{team.correo}} [img]="team.img" carrera={{team.carrera}}
+              dependencia={{team.dependencia}} proyectos={{team.proyectos}}
+              tiempoActividad={{team.tiempoActividad}}>
+            </box-card-team>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--
+<footer class="footer">
+  <app-footer></app-footer>
+</footer>
+ -->
