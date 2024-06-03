@@ -13,3 +13,4 @@ export class AcademyComponent implements OnInit {
   }
 
 }
+

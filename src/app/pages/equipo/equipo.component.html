@@ -1,11 +1,11 @@
 <section class="equipo">
   <div class="my-container">
-    <h1>Equipo</h1>
-    <h6>
+    <h1 class="font-bold text-3xl mb-4 text-center mt-10 twhiteext-" style="color: #0f3d59">Equipo</h1>
+    <p class="mt-8 text-lg leading-relaxed text-center my-10 text-gray-600">
       En LiiD hacemos avanzar la educación, enseñanza e investigación. Apoyamos los proyectos del laboratorio con el
       trabajo conjunto de estudiantes de todas las carreras universitarias. El objetivo es desarrollar soluciones
       innovadoras para los retos del mundo real.
-    </h6>
+    </p>
 
     <div *ngFor="let dep of dependencias">
       <!-- Agregamos un botón para manejar el despliegue -->
@@ -13,22 +13,17 @@
 
       <!-- Usamos *ngIf para mostrar el card-container solo si la dependencia está seleccionada -->
       <div class="card-container" *ngIf="dep === selectedDep">
-        <ng-container *ngFor="let team of getTeamByDependency(dep)">
-          <div class="item">
-            <box-card-team nombre={{team.nombre}} correo={{team.correo}} [img]="team.img" carrera={{team.carrera}}
-              dependencia={{team.dependencia}} proyectos={{team.proyectos}}
-              tiempoActividad={{team.tiempoActividad}}>
-            </box-card-team>
-          </div>
-        </ng-container>
-      </div>
+        <div class="scroll-container">
+          <ng-container *ngFor="let team of getTeamByDependency(dep)">
+            <div class="item">
+              <box-card-team nombre={{team.nombre}} correo={{team.correo}} [img]="team.img" carrera={{team.carrera}}
+                dependencia={{team.dependencia}} proyectos={{team.proyectos}}
+                tiempoActividad={{team.tiempoActividad}}>
+              </box-card-team>
+            </div>
+          </ng-container>
+        </div>
+      </div>      
     </div>
   </div>
 </section>
-
-
-<!--
-<footer class="footer">
-  <app-footer></app-footer>
-</footer>
- -->

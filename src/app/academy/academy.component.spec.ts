@@ -21,3 +21,4 @@ describe('AcademyComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

@@ -49,3 +49,4 @@ export class BoxCard implements AfterViewInit {
     this.isModalOpen = false;
   }
 }
+

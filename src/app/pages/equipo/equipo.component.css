@@ -1,19 +1,20 @@
 .equipo {
   /* background-color: var(--primario); */
   position: relative;
+  background-color: white;
 }
 
 h2 {
-  color: #FFFFFF;
+  color: #104d73;
   padding-top: 50px;
   font-size: 30px;
 }
 h1 {
-  color: #FFFFFF;
+  color: #104d73;
   padding-top: 2%;
 }
 h6 {
-  color: #FFFFFF;
+  color: #104d73;
   padding-top: 10px;
 }
 .footer {
@@ -45,10 +46,27 @@ h6 {
   row-gap: 38px;
   width: 100%;
   padding-top: 46px;
+  padding-bottom: 46px;
   justify-items: center;
   background-color: #FFFFFF;
-  border-radius: 20px;
+  border-radius: 10px; 
 }
+.dep-toggle {
+  background-color: #104d73;
+  color: white; /* Azul */
+  border-radius: 10px; /* Ajusta el valor según lo desees */
+  padding: 10px 20px; /* Ajusta el relleno según lo desees */
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin: auto; /* Esto centrará horizontalmente el botón */
+  margin-bottom: 10px; /* Separación entre botones */
+  margin-top: 10px;
+  width: 100%; /* Hace que el botón ocupe todo el ancho de su contenedor */
+  box-sizing: border-box; /* Incluye el padding y el border en el ancho total */
+}
+
+
 .item {
   display: inline-grid;
   width: 385px;
@@ -75,3 +93,36 @@ h6 {
     width: 300px;
   }
 }
+
+.card-container {
+  width: 100%;
+  overflow-x: auto; /* Permite que haya un scroll horizontal */
+  white-space: nowrap; /* Evita que los elementos se envuelvan */
+}
+
+.scroll-container {
+  display: inline-flex; /* Hace que los elementos se organicen en una fila */
+}
+
+.item {
+  width: 385px;
+  margin-right: 20px; /* Espacio entre elementos */
+}
+
+.item:last-child {
+  margin-right: 0; /* Elimina el margen derecho del último elemento */
+}
+
+@media (max-width: 1020px) {
+  .item {
+    width: 100%;
+    margin-right: 0; /* Elimina el margen entre elementos en dispositivos pequeños */
+  }
+}
+
+
+
+
+
+
+
