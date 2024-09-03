@@ -1,5 +1,78 @@
 <section class="equipo">
   <div class="my-container">
+    <div class="sections-contents">
+      <div class="info-text">
+        <h2 class="title-section">Conoce nuestro equipo</h2>
+        <p class="normal-text">
+          El LiiD apoya a los docentes en proyectos con la ayuda de distintos
+          estudiantes de todas las carreras universitarias, de esta manera el
+          laboratorio se destaca por poder desarrollar proyectos transversales
+          entre distintas áreas.
+        </p>
+
+        <article class="normal-text urls-dependencies">
+          <a
+            *ngFor="let dep of dependenciasData"
+            class="normal-text"
+            [href]="'equipo#' + dep.idElementHTML"
+          >
+            {{ dep.id }}
+          </a>
+        </article>
+      </div>
+      <div class=""></div>
+    </div>
+
+    <div
+      *ngFor="let dep of dependenciasData; let i = index"
+      class="dependencia-container sections-contents"
+      [id]="dep.idElementHTML"
+    >
+      <!-- Div para índices pares -->
+      <div *ngIf="i % 2 === 0" class="par-container">
+        <h3 class="title-dependencia">{{ dep.id }}</h3>
+        <p class="normal-text">{{ dep.description }}</p>
+      </div>
+
+      <!-- this is a spe before and after to contains corousel -->
+      <div class="flex justify-center">
+        <div class="w-[35rem]">
+          <swiper-container
+            class="w-full"
+            loop="false"
+            slides-per-view="auto"
+            speed="800"
+            space-between="10"
+            centered-slides="true"
+            [grabCursor]="true"
+            coverflow-effect-rotate="50"
+            effect="coverflow"
+            autoplay-delay="5000"
+            autoplay-disable-on-interaction="false"
+            navigation="true"
+            coverflow-effect-stretch="0"
+            coverflow-effect-modifier="1"
+            coverflow-effect-slide-shadows="false"
+            resizeObserver="true"
+          >
+            <swiper-slide *ngFor="let p of dep.periodos" class="!w-fit">
+              <img [src]="findPortada(p)" alt="" />
+            </swiper-slide>
+          </swiper-container>
+        </div>
+      </div>
+
+      <!-- Div para índices impares -->
+      <div *ngIf="i % 2 !== 0" class="impar-container">
+        <h3 class="title-dependencia">{{ dep.id }}</h3>
+        <p class="normal-text">{{ dep.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="equipo">
+  <div class="my-container">
     <h1 class="font-bold text-3xl mb-4 text-center mt-10 twhiteext-" style="color: #0f3d59">Equipo</h1>
     <p class="mt-8 text-lg leading-relaxed text-center my-10 text-gray-600">
       En LiiD hacemos avanzar la educación, enseñanza e investigación. Apoyamos los proyectos del laboratorio con el
@@ -7,12 +80,12 @@
       innovadoras para los retos del mundo real.
     </p>
 
-    <div *ngFor="let dep of dependencias">
-      <!-- Agregamos un botón para manejar el despliegue -->
-      <button (click)="toggleDep(dep)" class="dep-toggle">{{ dep }}</button>
+    <div *ngFor="let dep of dependencias"> -->
+<!-- Agregamos un botón para manejar el despliegue -->
+<!-- <button (click)="toggleDep(dep)" class="dep-toggle">{{ dep }}</button> -->
 
-      <!-- Usamos *ngIf para mostrar el card-container solo si la dependencia está seleccionada -->
-      <div class="card-container" *ngIf="dep === selectedDep">
+<!-- Usamos *ngIf para mostrar el card-container solo si la dependencia está seleccionada -->
+<!--  <div class="card-container" *ngIf="dep === selectedDep">
         <div class="scroll-container">
           <ng-container *ngFor="let team of getTeamByDependency(dep)">
             <div class="item">
@@ -23,7 +96,7 @@
             </div>
           </ng-container>
         </div>
-      </div>      
+      </div>
     </div>
   </div>
-</section>
+</section> -->

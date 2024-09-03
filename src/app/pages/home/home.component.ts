@@ -2,11 +2,8 @@ import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FirestoreService } from 'src/app/firestore.service';
 // import Swiper core and required modules
-import SwiperCore, { EffectCoverflow, Pagination } from "swiper";
 
 // install Swiper modules
-SwiperCore.use([EffectCoverflow, Pagination]);
-
 
 interface Project {
   alcance: string;
@@ -28,16 +25,6 @@ interface Project {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnDestroy {
-
-  /* observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      console.log(entry);
-      // entry.target.getAttribute("id");
-      // document.querySelector("listado-items ")
-
-    })
-  }) */
-
   list: Project[] = [];
   suscription: Subscription;
   constructor(firebaseService: FirestoreService) {

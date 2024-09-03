@@ -1,128 +1,88 @@
 .equipo {
-  /* background-color: var(--primario); */
   position: relative;
   background-color: white;
 }
 
-h2 {
-  color: #104d73;
-  padding-top: 50px;
-  font-size: 30px;
-}
-h1 {
-  color: #104d73;
-  padding-top: 2%;
-}
-h6 {
-  color: #104d73;
-  padding-top: 10px;
-}
-.footer {
-  padding-top: 125px;
-  /* background-color: var(--primario); */
-  position: relative;
-}
-
 .my-container {
   display: flex;
-  padding: 130px;
-  padding-top: 70px;
+  padding: 10rem 9rem;
   flex-direction: column;
+  /* bg-image */
+  background-image: url("./../../../assets/iconos/liid-logo-bg.svg"),
+    url("./../../../assets/iconos/liid-logo-bg.svg");
+  background-repeat: repeat-y;
+  background-size: 30vh 500vh;
+  background-position: left 10rem top 505vh, right 10rem top 300vh;
 }
-.my-container h1 {
-  font-size: 42px;
-  font-weight: 700px;
-  color: #FFFFFF ;
+
+.title-section,
+.title-dependencia {
+  color: var(--primario, #104d73);
 }
-.my-container h6 {
-  font-size: 20px;
-  font-weight: 200;
-  max-width: 50%;
-  line-height: 30px;
+.title-section {
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.14806rem;
 }
-.card-container {
+.title-dependencia {
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2.14806rem;
+}
+
+.normal-text {
+  color: #000;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 275;
+  line-height: 1.63125rem;
+}
+
+.info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.urls-dependencies {
   display: grid;
-  grid-template-columns: auto auto auto;
-  row-gap: 38px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  justify-content: center;
+}
+
+.sections-contents {
+  min-height: 30vh;
   width: 100%;
-  padding-top: 46px;
-  padding-bottom: 46px;
-  justify-items: center;
-  background-color: #FFFFFF;
-  border-radius: 10px; 
-}
-.dep-toggle {
-  background-color: #104d73;
-  color: white; /* Azul */
-  border-radius: 10px; /* Ajusta el valor según lo desees */
-  padding: 10px 20px; /* Ajusta el relleno según lo desees */
-  border: none;
-  cursor: pointer;
-  display: block;
-  margin: auto; /* Esto centrará horizontalmente el botón */
-  margin-bottom: 10px; /* Separación entre botones */
-  margin-top: 10px;
-  width: 100%; /* Hace que el botón ocupe todo el ancho de su contenedor */
-  box-sizing: border-box; /* Incluye el padding y el border en el ancho total */
+  display: grid;
+  align-items: center;
 }
 
-
-.item {
-  display: inline-grid;
-  width: 385px;
+.dependencia-container {
+  /* min-height: 60vh; */
+  padding: 8rem 0;
 }
-@media (max-width: 1420px) {
-  .card-container {
+
+@media (min-width: 1020px) {
+  .sections-contents {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 @media (max-width: 1020px) {
-  .card-container {
+  .sections-contents {
     grid-template-columns: repeat(1, 1fr);
   }
-  .my-container h6 {
-    font-size: 16px;
-    max-width: 100%;
-  }
   .my-container {
-    padding: 20px;
+    padding: 12rem 4rem;
+
+    background-image: url("./../../../assets/iconos/liid-logo-bg.svg");
+    background-repeat: repeat-y;
+    background-size: 30vh 200vh;
+    background-position: center top 155vh;
   }
 }
-@media (max-width: 500px) {
-  .item {
-    width: 300px;
-  }
-}
-
-.card-container {
-  width: 100%;
-  overflow-x: auto; /* Permite que haya un scroll horizontal */
-  white-space: nowrap; /* Evita que los elementos se envuelvan */
-}
-
-.scroll-container {
-  display: inline-flex; /* Hace que los elementos se organicen en una fila */
-}
-
-.item {
-  width: 385px;
-  margin-right: 20px; /* Espacio entre elementos */
-}
-
-.item:last-child {
-  margin-right: 0; /* Elimina el margen derecho del último elemento */
-}
-
-@media (max-width: 1020px) {
-  .item {
-    width: 100%;
-    margin-right: 0; /* Elimina el margen entre elementos en dispositivos pequeños */
-  }
-}
-
-
-
-
-
 
 

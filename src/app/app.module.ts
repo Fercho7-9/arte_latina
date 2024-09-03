@@ -1,9 +1,12 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { SwiperModule } from 'swiper/angular';
+import { register } from 'swiper/element/bundle';
+
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { AppComponent } from './app.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
@@ -19,9 +22,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { EquipoComponent } from './pages/equipo/equipo.component';
 import { NuevosProyectosComponent } from './pages/nuevos-proyectos/nuevos-proyectos.component';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { SharedModule } from './shared/shared.module';
 import { BoxCardTeam } from './components/box-card-team/box-card-team.component';
 import { FormsModule } from '@angular/forms';
@@ -30,6 +31,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AcademyComponent } from './academy/academy.component';
 import { ResourcesComponent } from './resources/resources.component';
+import { ProjectLayoutComponent } from './pages/project-layout/project-layout.component';
+
+register();
 
 @NgModule({
   declarations: [
@@ -49,21 +53,24 @@ import { ResourcesComponent } from './resources/resources.component';
     BoxCardTeam,
     AcademyComponent,
     ResourcesComponent,
+    ProjectLayoutComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SwiperModule,
+
     RouterModule,
     MatMenuModule,
     MatToolbarModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     SharedModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
 export class AppModule {}

@@ -9,12 +9,14 @@ import { EquipoComponent } from './pages/equipo/equipo.component';
 import { NuevosProyectosComponent } from './pages/nuevos-proyectos/nuevos-proyectos.component';
 import { AcademyComponent } from './academy/academy.component';
 import { ResourcesComponent } from './resources/resources.component';
+import { ProjectLayoutComponent } from './pages/project-layout/project-layout.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'nosotros', component: AboutComponent },
-  { path: 'nuevos-proyectos', component: NuevosProyectosComponent },
+  // { path: 'nuevos-proyectos', component: NuevosProyectosComponent },
   { path: 'proyectos', component: ProyectosComponent },
+  { path: 'proyectos/:idProject', component: ProjectLayoutComponent },
   { path: 'contacto', component: ContactoComponent },
   { path: 'equipo', component: EquipoComponent },
   { path: 'academia-ascendere', component: AcademyComponent },

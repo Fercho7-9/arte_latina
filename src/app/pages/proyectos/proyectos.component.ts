@@ -1,7 +1,8 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FirestoreService } from 'src/app/firestore.service';
-interface Project {
+export interface Project {
   alcance: string;
   capturas: string[];
   descripcion: string;
@@ -19,20 +20,24 @@ interface Project {
   templateUrl: './proyectos.component.html',
   styleUrls: ['./proyectos.component.css'],
 })
-export class ProyectosComponent implements OnDestroy {
+export class ProyectosComponent implements OnInit {
   list: Project[] = [];
-  suscription: Subscription;
-  constructor(firebaseService: FirestoreService) {
-    this.suscription = firebaseService.getProjects().subscribe((res) => {
-      console.log('los proyectos son', res);
+  constructor(
+    private firebaseService: FirestoreService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.firebaseService.getProjects().subscribe((res) => {
       this.list = res;
     });
   }
-  ngOnDestroy(): void {
-    this.suscription.unsubscribe();
-  }
-  readMore(demo: any) {
 
+  readMore(id: string) {
+    this.router.navigate(['/proyectos', this.encodeID(id)]);
+  }
+
+  private encodeID(id: string): string {
+    return btoa(id);
   }
 }
-

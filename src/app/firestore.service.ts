@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import {
-  CollectionReference,
-  Firestore,
-  collection,
-  collectionData,
-} from '@angular/fire/firestore';
+import { map, Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 interface Project {
   alcance: string;
   capturas: string[];
@@ -24,9 +20,10 @@ interface NewProject {
   descripcion: string;
   tipoProyecto: string;
   titulo: string;
-  gp: string
+  gp: string;
 }
 interface Team {
+  id: string;
   correo: string;
   carrera: string;
   dependencia: string;
@@ -35,28 +32,83 @@ interface Team {
   proyectos: string;
   tiempoActividad: string;
 }
+export interface DependenciaUnidad {
+  id: string;
+  idElementHTML: string;
+  description: string;
+  periodos: string[];
+}
+export interface PeriodoCard {
+  id: string;
+  portada: string;
+}
+export interface Periodo {
+  id: string;
+  portada: string;
+  team: string[];
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirestoreService {
-  private newProjectCollection: CollectionReference<any>;
-  private projectsCollection: CollectionReference<any>;
-  private TeamCollection: CollectionReference<any>;
+  constructor(private afs: AngularFirestore) {}
 
-  constructor(afs: Firestore) {
-    this.newProjectCollection = collection(afs, 'NewProjects');
-    this.projectsCollection = collection(afs, 'Projects');
-    this.TeamCollection = collection(afs, 'Team');
+  getProjects(): Observable<Project[]> {
+    return this.afs.collection<Project>('Projects').valueChanges();
+  }
+  getNewProjects(): Observable<NewProject[]> {
+    return this.afs.collection<NewProject>('NewProjects').valueChanges();
+  }
+  getTeamCollection(): Observable<Team[]> {
+    return this.afs
+      .collection<Team>('Team')
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((a) => {
+            const data = a.payload.doc.data();
+            const id = a.payload.doc.id;
+            return { ...data, id };
+          })
+        )
+      );
   }
 
-  getProjects = (): Observable<Project[]> => {
-    return collectionData(this.projectsCollection);
-  };
-  getNewProjects = (): Observable<NewProject[]> => {
-    return collectionData(this.newProjectCollection);
-  };
-  getTeamCollection = (): Observable<Team[]> => {
-    return collectionData(this.TeamCollection);
-  };
+  getProjectsByID(id: string): Observable<Project | undefined> {
+    return this.afs.collection('Projects').doc<Project>(id).valueChanges();
+  }
+
+  getDependenciasUnidades(): Observable<DependenciaUnidad[]> {
+    return this.afs
+      .collection<DependenciaUnidad>('Dependencias')
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((a) => {
+            const data = a.payload.doc.data();
+            const id = a.payload.doc.id;
+            return { ...data, id };
+          })
+        )
+      );
+  }
+
+  getOnlyPeriodosWithOutTeam(): Observable<PeriodoCard[]> {
+    return this.afs
+      .collection<Periodo>('Periodos')
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((a) => {
+            const data = a.payload.doc.data();
+            const id = a.payload.doc.id;
+            return { portada: data.portada, id };
+          })
+        )
+      );
+  }
+  getPeriodoByID(id: string): Observable<Periodo | undefined> {
+    return this.afs.collection('Periodos').doc<Periodo>(id).valueChanges();
+  }
 }

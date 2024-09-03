@@ -1,6 +1,16 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
-import { FirestoreService } from 'src/app/firestore.service';
+import {
+  DependenciaUnidad,
+  FirestoreService,
+  PeriodoCard,
+} from 'src/app/firestore.service';
 
 interface Team {
   correo: string;
@@ -15,26 +25,40 @@ interface Team {
 @Component({
   selector: 'app-equipo',
   templateUrl: './equipo.component.html',
-  styleUrls: ['./equipo.component.css']
+  styleUrls: ['./equipo.component.css'],
 })
-export class EquipoComponent implements OnDestroy, AfterViewInit {
+export class EquipoComponent implements OnInit, AfterViewInit {
   list: Team[] = [];
   dependencias: string[] = [];
-  suscription: Subscription = new Subscription();
+  dependenciasData: DependenciaUnidad[] = [];
   selectedDep: string | null = null;
+  periodosData!: PeriodoCard[];
   @ViewChild('scrollContainer') scrollContainer!: ElementRef;
 
   constructor(private firebaseService: FirestoreService) {}
 
   ngOnInit(): void {
-    this.suscription = this.firebaseService.getTeamCollection().subscribe((res) => {
+    this.firebaseService.getTeamCollection().subscribe((res) => {
       this.list = res;
-      this.dependencias = this.list.map((item) => item.dependencia).filter(this.distinct);
-    });
-  }
+      this.dependencias = this.list
+        .map((item) => item.dependencia)
+        .filter(this.distinct);
 
-  ngOnDestroy(): void {
-    this.suscription.unsubscribe();
+      this.firebaseService.getDependenciasUnidades().subscribe((res) => {
+        console.log(res);
+        //  want to order the data by this.dependencias and compare with res.id
+        this.dependenciasData = res.sort((a, b) => {
+          return (
+            this.dependencias.indexOf(a.id) - this.dependencias.indexOf(b.id)
+          );
+        });
+      });
+    });
+
+    this.firebaseService.getOnlyPeriodosWithOutTeam().subscribe((res) => {
+      this.periodosData = res;
+      console.log(this.periodosData);
+    });
   }
 
   ngAfterViewInit(): void {
@@ -61,11 +85,19 @@ export class EquipoComponent implements OnDestroy, AfterViewInit {
     let scrollAmount = 1;
     setInterval(() => {
       scrollContainer.scrollLeft += scrollAmount;
-      if (scrollContainer.scrollLeft >= (scrollContainer.scrollWidth - scrollContainer.clientWidth) || scrollAmount < 0) {
+      if (
+        scrollContainer.scrollLeft >=
+          scrollContainer.scrollWidth - scrollContainer.clientWidth ||
+        scrollAmount < 0
+      ) {
         scrollAmount = -scrollAmount;
       }
     }, 50); // Ajusta la velocidad del scroll según sea necesario (50ms = 20fps)
   }
+
+  // equipo.component.ts
+  findPortada(id: any): any {
+    const periodo = this.periodosData.find((periodo) => periodo.id === id);
+    return periodo!.portada;
+  }
 }
-
-

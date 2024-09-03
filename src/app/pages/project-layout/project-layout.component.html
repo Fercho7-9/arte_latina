@@ -1,0 +1,78 @@
+<section class="bg-white py-24">
+  <div class="container my-12 mx-auto">
+    <h1 class="font-bold text-3xl mb-4 text-gray-700 text-center">
+      {{ dataProject.titulo }}
+    </h1>
+    <h6 class="text-gray-700 mb-6">
+      {{ dataProject.descripcion }}
+    </h6>
+
+    <section class="flex justify-center my-5">
+      <div class="bg-gray-200 rounded-lg p-4">
+        <table class="w-full table-auto">
+          <tbody>
+            <tr *ngIf="!!dataProject.proponente">
+              <td class="py-2 px-4 border-r border-opacity-50">
+                <strong class="text-gray-700">Proponente:</strong>
+              </td>
+              <td class="py-2 px-4 text-gray-700">
+                {{ dataProject.proponente }}
+              </td>
+            </tr>
+            <tr *ngIf="!!dataProject.equipoDesarrollo">
+              <td class="py-2 px-4 border-r border-opacity-50">
+                <strong class="text-gray-700">Equipo de desarrollo:</strong>
+              </td>
+              <td class="py-2 px-4 text-gray-700">
+                {{ dataProject.equipoDesarrollo }}
+              </td>
+            </tr>
+            <tr *ngIf="!!dataProject.tecnologias">
+              <td class="py-2 px-4 border-r border-opacity-50">
+                <strong class="text-gray-700">Tecnologías:</strong>
+              </td>
+              <td class="py-2 px-4 text-gray-700">
+                {{ dataProject.tecnologias }}
+              </td>
+            </tr>
+            <tr *ngIf="!!dataProject.tiempoDesarrollo">
+              <td class="py-2 px-4 border-r border-opacity-50">
+                <strong class="text-gray-700">Tiempo de desarrollo:</strong>
+              </td>
+              <td class="py-2 px-4 text-gray-700">
+                {{ dataProject.tiempoDesarrollo }}
+              </td>
+            </tr>
+            <tr *ngIf="!!dataProject.enlace">
+              <td class="py-2 px-4 border-r border-opacity-50">
+                <strong class="text-gray-700">Enlace:</strong>
+              </td>
+              <td class="py-2 px-4 text-gray-700">
+                <!-- {{ dataProject.enlace }} -->
+                <a [href]="dataProject.enlace" target="_blank">{{
+                  dataProject.enlace
+                }}</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section
+      class="flex flex-wrap"
+      *ngIf="dataProject.capturas.length > 0 && dataProject.capturas[0] != ''"
+    >
+      <section class="p-4 rounded-lg" style="background-color: var(--primario)">
+        <div class="grid grid-cols-3 gap-4">
+          <div
+            *ngFor="let image of dataProject.capturas"
+            class="rounded-lg border border-white"
+          >
+            <img [src]="image" alt="Captura de pantalla" class="rounded-lg" />
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+</section>
