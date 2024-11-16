@@ -1,62 +1,29 @@
-<nav class="flex flex-wrap justify-between text-white items-center p-4 sm:px-8 md:px-24 fixed w-full bg-[#044170] z-50">
-  <div class="w-24 sm:w-16 md:w-auto flex-shrink-0">
-    <a><img routerLink="/" src="/assets/logo.svg" alt="Logo" class="w-full h-auto cursor-pointer"></a>
-    </div>
-  <div class="hidden sm:flex space-x-10">
-    <a routerLink="/nosotros"
-      class="flex items-center space-x-2 p-2 hover:text-amber-500 hover:border-b-2 hover:border-amber-500">
-      Nosotros
-    </a>
-    <a routerLink="/academia-ascendere" class="flex items-center space-x-2 p-2 hover:text-amber-500 hover:border-b-2 hover:border-amber-500">
-      Academia
-    </a>
-    <a routerLink="/proyectos"
-      class="flex items-center space-x-2 p-2 hover:text-amber-500 hover:border-b-2 hover:border-amber-500">
-      Proyectos
-    </a>
-    <a routerLink="/equipo"
-      class="flex items-center space-x-2 p-2 hover:text-amber-500 hover:border-b-2 hover:border-amber-500">
-      Equipo
-    </a>
-    <a routerLink="/recursos"
-      class="flex items-center space-x-2 p-2 hover:text-amber-500 hover:border-b-2 hover:border-amber-500">
-      Recursos
+<nav class="flex justify-between items-center p-4 bg-[#044170] fixed w-full text-white z-50">
+
+  <div class="flex-shrink-0">
+    <a routerLink="/">
+      <img src="/assets/logo.svg" alt="Logo" class="h-10 md:h-12 cursor-pointer">
     </a>
   </div>
 
-  <button mat-icon-button [matMenuTriggerFor]="menu" class="sm:hidden text-3xl flex-shrink-0">
+
+  <div class="hidden md:flex space-x-8">
+    <a routerLink="/academia-ascendere" class="hover:text-[#FFCC00]">Academia</a>
+    <a routerLink="/proyectos" class="hover:text-[#FFCC00]">Proyectos</a>
+    <a routerLink="/nosotros" class="hover:text-[#FFCC00]">Nosotros</a>
+    <a routerLink="/equipo" class="hover:text-[#FFCC00]">Equipo</a>
+    <a routerLink="/recursos" class="hover:text-[#FFCC00]">Recursos</a>
+  </div>
+
+
+  <div>
+    <button
+      class="bg-gradient-to-r from-[#FFCC00] to-[#FF9900] text-white py-2 px-14 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 hover:brightness-110 font-normal">
+      Ingresar
+    </button>
+  </div>
+
+  <button class="md:hidden text-2xl">
     <i class="fas fa-bars"></i>
-</button>
-
-
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item [routerLink]="['/']">
-      <i class="fas fa-home"></i>
-      <span class="text-black hover:text-amber-700">Inicio</span>
-    </button>
-    <button mat-menu-item [routerLink]="['/nosotros']">
-      <i class="fas fa-info-circle"></i>
-      <span class="text-black hover:text-amber-700">Nosotros</span>
-    </button>
-    <button mat-menu-item [routerLink]="['/labvirtual']">
-      <i class="fas fa-flask"></i>
-      <span class="text-black hover:text-amber-700">Lab Virtual</span>
-    </button>
-    <button mat-menu-item [routerLink]="['/academia-ascendere']">
-      <i class="fas fa-university"></i>
-      <span class="text-black hover:text-amber-700">Academia Ascendere</span>
-    </button>
-    <button mat-menu-item [routerLink]="['/proyectos']">
-      <i class="fas fa-project-diagram"></i>
-      <span class="text-black hover:text-amber-700">Proyectos</span>
-    </button>
-    <button mat-menu-item [routerLink]="['/equipo']">
-      <i class="fas fa-users"></i>
-      <span class="text-black hover:text-amber-700">Equipo</span>
-    </button>
-    <button mat-menu-item [routerLink]="['/recursos']">
-      <i class="fas fa-book"></i>
-      <span class="text-black hover:text-amber-700">Recursos</span>
-    </button>
-  </mat-menu>
+  </button>
 </nav>
