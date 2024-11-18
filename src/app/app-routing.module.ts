@@ -10,6 +10,7 @@ import { NuevosProyectosComponent } from './pages/nuevos-proyectos/nuevos-proyec
 import { AcademyComponent } from './academy/academy.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { ProjectLayoutComponent } from './pages/project-layout/project-layout.component';
+import { AdmiComponent } from './pages/admi/admi.component'; // Importa tu componente
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'equipo', component: EquipoComponent },
   { path: 'academia-ascendere', component: AcademyComponent },
   { path: 'recursos', component: ResourcesComponent },
-  { path: '**', redirectTo: '' },
+  { path: 'admi', component: AdmiComponent }, // Agrega esta línea para tu componente Admi
+  { path: '**', redirectTo: '' }, // Redirección a Home para rutas no encontradas
 ];
 
 @NgModule({

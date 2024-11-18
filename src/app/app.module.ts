@@ -32,6 +32,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AcademyComponent } from './academy/academy.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { ProjectLayoutComponent } from './pages/project-layout/project-layout.component';
+import { AdmiComponent } from './pages/admi/admi.component';
 
 register();
 
@@ -54,6 +55,7 @@ register();
     AcademyComponent,
     ResourcesComponent,
     ProjectLayoutComponent,
+    AdmiComponent,
   ],
   imports: [
     BrowserModule,
