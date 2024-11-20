@@ -1,29 +1,76 @@
-<nav class="flex justify-between items-center p-4 bg-[#044170] fixed w-full text-white z-50">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar Arte Latino</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900">
 
-  <div class="flex-shrink-0">
-    <a routerLink="/">
-      <img src="/assets/logo.svg" alt="Logo" class="h-10 md:h-12 cursor-pointer">
-    </a>
-  </div>
+  <!-- Navbar -->
+  <nav class="bg-[#0A2035] text-white py-4 px-8 flex items-center justify-between fixed w-full z-50">
+    <!-- Logo -->
+    <div class="flex items-center space-x-2">
+      <img src="images/logo.png" alt="Logo Arte Latino" class="h-8">
+      <span class="font-semibold text-lg">Arte Latino</span>
+    </div>
 
+    <!-- Links -->
+    <div class="hidden md:flex items-center space-x-8">
+      <!-- Artistas -->
+      <div class="relative group">
+        <button class="flex items-center space-x-1 hover:text-gray-300">
+          <span>Artistas</span>
+          <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <!-- Dropdown -->
+        <div class="hidden group-hover:block absolute bg-white text-black py-2 mt-2 rounded shadow-lg">
+          <a href="#" class="block px-4 py-2 hover:bg-gray-200">Artista 1</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-200">Artista 2</a>
+        </div>
+      </div>
 
-  <div class="hidden md:flex space-x-8">
-    <a routerLink="/academia-ascendere" class="hover:text-[#FFCC00]">Academia</a>
-    <a routerLink="/proyectos" class="hover:text-[#FFCC00]">Proyectos</a>
-    <a routerLink="/nosotros" class="hover:text-[#FFCC00]">Nosotros</a>
-    <a routerLink="/equipo" class="hover:text-[#FFCC00]">Equipo</a>
-    <a routerLink="/recursos" class="hover:text-[#FFCC00]">Recursos</a>
-  </div>
+      <!-- Diseños -->
+      <div class="relative group">
+        <button class="flex items-center space-x-1 hover:text-gray-300">
+          <span>Diseños</span>
+          <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <!-- Dropdown -->
+        <div class="hidden group-hover:block absolute bg-white text-black py-2 mt-2 rounded shadow-lg">
+          <a href="#" class="block px-4 py-2 hover:bg-gray-200">Diseño 1</a>
+          <a href="#" class="block px-4 py-2 hover:bg-gray-200">Diseño 2</a>
+        </div>
+      </div>
 
-  <div>
-    <button
-     routerLink="/admi"
-      class="bg-gradient-to-r from-[#FFCC00] to-[#FF9900] text-white py-2 px-14 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 hover:brightness-110 font-normal">
-      Ingresar
-    </button>
-  </div>
+      <!-- Tienda Online -->
+      <a href="#" class="hover:text-gray-300">Tienda Online</a>
 
-  <button class="md:hidden text-2xl">
-    <i class="fas fa-bars"></i>
-  </button>
-</nav>
+      <!-- Contacto -->
+      <a href="#" class="hover:text-gray-300">Contacto</a>
+    </div>
+
+    <!-- Icono de carrito y botón de ingresar -->
+    <div class="flex items-center space-x-4">
+      <!-- Icono de carrito -->
+      <svg class="h-6 w-6 hover:text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.1 2m1.1-2H4m3 0l1.1 2m10.9-2a1 1 0 110 2 1 1 0 010-2zm-10 0a1 1 0 110 2 1 1 0 010-2z" />
+      </svg>
+
+      <!-- Botón de ingresar -->
+      <button class="bg-gradient-to-r from-[#C69A6A] to-[#D2A57C] text-black px-6 py-2 rounded-full hover:scale-105 transition">
+        Ingresar
+      </button>
+    </div>
+  </nav>
+
+  <!-- Espaciador para simular contenido debajo del navbar -->
+  <div class="h-24"></div>
+
+</body>
+</html>
