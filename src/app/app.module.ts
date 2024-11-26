@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+
+// Importar AppComponent y marcarlo como standalone
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http'; 
 
 // Importar componentes standalone
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -15,9 +17,12 @@ import { ContactosComponent } from './pages/contactos/contactos.component';
 import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
+  declarations: [],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    AppComponent,
     NavbarComponent,
     FooterComponent,
     HomeComponent,
@@ -26,9 +31,7 @@ import { LoginComponent } from './pages/login/login.component';
     TiendaOnlineComponent,
     ContactosComponent,
     LoginComponent,
-    HttpClientModule  
   ],
-  declarations: [],
-  bootstrap: [AppModule], // El componente que se debe bootstrap es AppComponent
+  bootstrap: [AppModule], // Bootstrap del componente principal standalone
 })
 export class AppModule {}
