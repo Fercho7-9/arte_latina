@@ -10,21 +10,27 @@ import { LoginComponent } from './pages/login/login.component';
 
 // Definición de rutas
 const routes: Routes = [
-  { path: 'home', component: HomeComponent }, // Ruta a la página de inicio
-  { path: 'artistas', component: ArtistasComponent }, // Ruta a la página de artistas
-  { path: 'tienda-online', component: TiendaOnlineComponent }, // Ruta a la tienda en línea
-  { path: 'contactos', component: ContactosComponent }, // Ruta a la página de contactos
-  { path: 'login', component: LoginComponent }, // Ruta para ingresar artistas
+  { path: 'home', component: HomeComponent }, // Ruta para la página de inicio
+  { path: 'artistas', component: ArtistasComponent }, // Ruta para la página de artistas
+  { path: 'tienda-online', component: TiendaOnlineComponent }, // Ruta para la tienda en línea
+  { path: 'contactos', component: ContactosComponent }, // Ruta para la página de contactos
+  { path: 'login', component: LoginComponent }, // Ruta para la página de login
 
   // Redirección para la raíz del sitio
   { path: '', redirectTo: '/home', pathMatch: 'full' }, 
 
-  // Redirección para rutas no encontradas
-  { path: '**', redirectTo: '/home' }, 
+  // Redirección para rutas no encontradas (debe estar al final siempre)
+  { path: '**', redirectTo: '/home', pathMatch: 'full' }, 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)], // Configuración de las rutas principales
-  exports: [RouterModule], // Exportación del módulo de rutas
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled', // Restaura la posición del scroll al cambiar de ruta
+      anchorScrolling: 'enabled', // Habilita el scroll a anchors en la página
+      enableTracing: false, // Cambiar a true para depuración
+    }),
+  ],
+  exports: [RouterModule], // Exporta el módulo de enrutamiento para usar en AppModule
 })
-export class AppRoutingModule   {}
+export class AppRoutingModule {}

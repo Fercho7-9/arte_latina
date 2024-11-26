@@ -14,12 +14,10 @@ import { TiendaOnlineComponent } from './pages/tienda-online/tienda-online.compo
 import { ContactosComponent } from './pages/contactos/contactos.component';
 import { LoginComponent } from './pages/login/login.component';
 
-
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // Aquí solo debes importar los componentes standalone
     NavbarComponent,
     FooterComponent,
     HomeComponent,
@@ -28,11 +26,9 @@ import { LoginComponent } from './pages/login/login.component';
     TiendaOnlineComponent,
     ContactosComponent,
     LoginComponent,
-    BrowserModule,
     HttpClientModule  
   ],
-  declarations: [
-  ],
-  bootstrap: [AppModule],
+  declarations: [],
+  bootstrap: [AppModule], // El componente que se debe bootstrap es AppComponent
 })
 export class AppModule {}
