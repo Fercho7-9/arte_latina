@@ -1,0 +1,80 @@
+<div class="flex min-h-screen items-center justify-center">
+  <!-- Contenedor Principal -->
+  <div class="grid grid-cols-1 md:grid-cols-2 bg-white shadow-lg rounded-lg overflow-hidden max-w-5xl">
+    <!-- Sección Izquierda -->
+    <div class="relative bg-cover bg-center p-8" style="background-image: url('assets/images/v125_231.png');">
+      <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div class="relative z-10 text-white">
+        <blockquote class="italic text-2xl font-bold">"La inspiración existe, pero tiene que encontrarte trabajando."</blockquote>
+        <ul class="mt-6 space-y-4 text-lg">
+          <li>- Presenta Tus Obras Y Proyectos En Un Espacio Dedicado Exclusivamente A Artistas.</li>
+          <li>- Amplía Tu Red Y Encuentra Oportunidades De Colaboración O Venta.</li>
+          <li>- Obtén Consejos, Materiales Y Eventos Especiales Solo Para Artistas Registrados.</li>
+          <li>- Anuncia Tus Exposiciones, Talleres O Lanzamientos De Forma Destacada.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sección Derecha -->
+    <div class="p-8">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">Registro De Artista</h2>
+
+      <!-- Mensaje de éxito -->
+      <div *ngIf="successMessage" class="bg-green-100 text-green-800 p-4 rounded mb-4">
+        {{ successMessage }}
+      </div>
+
+      <form (ngSubmit)="onSubmit()" class="space-y-4">
+        <!-- Correo Electrónico -->
+        <div>
+          <label for="email" class="block text-gray-700">Correo electrónico</label>
+          <div class="flex items-center border border-gray-300 rounded-lg">
+            <input type="email" id="email" [(ngModel)]="email" name="email" required placeholder="Ingrese aquí su correo electrónico" class="w-full px-4 py-2 focus:outline-none">
+          </div>
+          <div *ngIf="!email && email !== ''" class="text-red-500 text-sm">
+            Correo electrónico es requerido.
+          </div>
+        </div>
+
+        <!-- Usuario -->
+        <div>
+          <label for="username" class="block text-gray-700">Usuario</label>
+          <div class="flex items-center border border-gray-300 rounded-lg">
+            <input type="text" id="username" [(ngModel)]="username" name="username" required minlength="3" placeholder="Ingrese aquí su usuario" class="w-full px-4 py-2 focus:outline-none">
+          </div>
+          <div *ngIf="!username || username.length < 3" class="text-red-500 text-sm">
+            El nombre de usuario es requerido y debe tener al menos 3 caracteres.
+          </div>
+        </div>
+
+        <!-- Contraseña -->
+        <div>
+          <label for="password" class="block text-gray-700">Contraseña</label>
+          <div class="flex items-center border border-gray-300 rounded-lg">
+            <input type="password" id="password" [(ngModel)]="password" name="password" required minlength="6" placeholder="Ingrese aquí su contraseña" class="w-full px-4 py-2 focus:outline-none">
+          </div>
+          <div *ngIf="!password || password.length < 6" class="text-red-500 text-sm">
+            La contraseña es requerida y debe tener al menos 6 caracteres.
+          </div>
+        </div>
+
+        <!-- Checkboxes -->
+        <div class="space-y-2">
+          <label class="flex items-center">
+            <input type="checkbox" [(ngModel)]="news" name="news" class="h-4 w-4 text-orange-500 focus:ring focus:ring-orange-200 rounded">
+            <span class="ml-2 text-sm text-gray-600">Marca Para Recibir Noticias Y Novedades De NFT Latino XYZ</span>
+          </label>
+          <label class="flex items-center">
+            <input type="checkbox" [(ngModel)]="terms" name="terms" required class="h-4 w-4 text-orange-500 focus:ring focus:ring-orange-200 rounded">
+            <span class="ml-2 text-sm text-gray-600">Al Crear Una Cuenta, Acepto Los <a href="#" class="text-blue-500">Términos</a> Y La <a href="#" class="text-blue-500">Política De Privacidad</a>.</span>
+          </label>
+        </div>
+
+        <!-- Botón de Crear Cuenta -->
+        <button type="submit" [disabled]="!email || !username || !password || !terms" class="w-full py-2 bg-orange-500 text-white font-bold rounded-lg hover:bg-orange-600">
+          Crear cuenta
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

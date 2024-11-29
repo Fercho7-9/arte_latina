@@ -5,6 +5,7 @@ import { ArtistasComponent } from './pages/artistas/artistas.component';
 import { TiendaOnlineComponent } from './pages/tienda-online/tienda-online.component';
 import { ContactosComponent } from './pages/contactos/contactos.component';
 import { LoginComponent } from './pages/login/login.component';
+import { CreateComponent } from './pages/create/create.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,6 +14,7 @@ export const routes: Routes = [
   { path: 'tienda-online', component: TiendaOnlineComponent },
   { path: 'contactos', component: ContactosComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'create', component: CreateComponent },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 @NgModule({
