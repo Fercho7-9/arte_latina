@@ -1,0 +1,74 @@
+<nav class="bg-[#0E1F38] text-white shadow-lg fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo alineado a la izquierda -->
+      <div class="flex items-center space-x-6 ml-1">
+        <a routerLink="/home"><img src="assets/icons/logo.png" alt="Logo Arte Latino" class="h-16 w-16 object-contain"></a>
+      </div>
+      
+      <!-- Links de navegación -->
+      <div class="hidden md:flex items-center space-x-24 relative mx-auto">
+        <div class="group relative">
+          <a routerLink="/artistas" class="hover:text-[#B58A44]  focus:text-[#B58A44]">Artistas</a>
+          <div class="absolute hidden group-hover:block bg-white text-sm rounded shadow-lg w-40 text-black ">
+            <a href="#" class="block px-4 py-2 hover:bg-[#B58A44] hover:text-white transition-colors">Nuevos</a>
+            <a href="#" class="block px-4 py-2 hover:bg-[#B58A44] hover:text-white transition-colors">Internacionales</a>
+            <a href="#" class="block px-4 py-2 hover:bg-[#B58A44] hover:text-white transition-colors">Nacionales</a>
+          </div>
+        </div>
+        
+        <div class="group relative">
+          <a routerLink="/disenos" class="hover:text-[#B58A44] focus:text-[#B58A44]">Diseños</a>
+          <div class="absolute hidden group-hover:block bg-white text-sm rounded shadow-lg w-40 text-black">
+            <a href="#" class="block px-4 py-2 hover:bg-[#B58A44] hover:text-white transition-colors">Pinturas Plásticas</a>
+            <a href="#" class="block px-4 py-2 hover:bg-[#B58A44] hover:text-white transition-colors">Pinturas Acrílica</a>
+            <a href="#" class="block px-4 py-2 hover:bg-[#B58A44] hover:text-white transition-colors">Pinturas Spray</a>
+            <a href="#" class="block px-4 py-2 hover:bg-[#B58A44] hover:text-white transition-colors">Pinturas Laca</a>
+          </div>
+        </div>
+
+        <a routerLink="/tienda" class="hover:text-[#B58A44] focus:text-[#B58A44]">Tienda Online</a>
+        <a routerLink="/contactos" class="hover:text-[#B58A44] focus:text-[#B58A44]">Contactos</a>
+      </div>
+
+      <!-- Ícono de carrito y botón alineado a la derecha -->
+     
+      <div class="flex items-center space-x-4 mr-6">
+        <!-- Ícono de carrito -->
+        <a (click)="toggleCart()" class="relative group cursor-pointer">
+          <app-cart [isVisible]="isCartVisible"></app-cart>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:fill-transparent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path class="group-hover:stroke-[#B58A44]" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 5h14M9 21h2M15 21h2" />
+          </svg>
+        </a>
+
+        <!-- Botón Ingresar -->
+        <a href="#" class="bg-gradient-to-r from-[#C59955] to-[#D4A157] px-6 py-2 rounded-full text-sm font-medium text-white hover:from-[#B58A44] hover:to-[#C5964F] hover:scale-105 transition-transform duration-300 shadow-lg">
+          Ingresar
+        </a>
+      </div>
+      
+      <!-- Menú móvil -->
+      <button onclick="toggleMenu()" class="md:hidden flex items-center">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden md:hidden bg-[#0E1F38]">
+    <div class="px-4 py-2 space-y-2">
+      <a routerLink="/artistas" class="block text-white hover:text-[#B58A44]">Artistas</a>
+      <a routerLink="/disenos" class="block text-white hover:text-[#B58A44]">Diseños</a>
+      <a routerLink="/tienda" class="block text-white hover:text-[#B58A44]">Tienda Online</a>
+      <a routerLink="/contactos" class="block text-white hover:text-[#B58A44]">Contactos</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Contenido principal -->
+<main class="pt-16">
+  <!-- Aquí va el contenido de la página principal -->
+</main>

@@ -1,0 +1,13 @@
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold text-center mb-8">Estilos Artísticos</h1>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div *ngFor="let estilo of estilos" class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <img [src]="estilo.imagen" [alt]="estilo.nombre" class="w-full h-48 object-cover">
+      <div class="p-6">
+        <h2 class="text-xl font-bold mb-2">{{estilo.nombre}}</h2>
+        <p class="text-gray-600">{{estilo.descripcion}}</p>
+      </div>
+    </div>
+  </div>
+</div>
