@@ -1,32 +1,92 @@
-<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-md w-full space-y-8">
-    <div>
-      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-        Iniciar Sesión
-      </h2>
+<div class="flex items-center justify-center min-h-screen bg-gray-900 font-poppins p-8">
+  <div class="flex w-[950px] bg-[#f9f9ea] rounded-lg shadow-lg overflow-hidden">
+    <!-- Sección izquierda (imagen) -->
+    <div class="w-1/2 bg-white">
+      <img src="assets/images/v36_113.png" alt="Arte latino" class="w-full h-full object-cover">
     </div>
-    <form class="mt-8 space-y-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="rounded-md shadow-sm -space-y-px">
-        <div>
-          <label for="email" class="sr-only">Email</label>
-          <input formControlName="email" id="email" type="email" required 
-                 class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
-                 placeholder="Email">
-        </div>
-        <div>
-          <label for="password" class="sr-only">Contraseña</label>
-          <input formControlName="password" id="password" type="password" required 
-                 class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
-                 placeholder="Contraseña">
-        </div>
-      </div>
 
-      <div>
-        <button type="submit" [disabled]="!loginForm.valid"
-                class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50">
-          Iniciar Sesión
-        </button>
+    <!-- Sección derecha (contenido) -->
+    <div class="w-1/2 flex items-center justify-center p-10 bg-[#f9f9ea]">
+      <div class="text-center w-full">
+        <h1 class="text-2xl font-bold text-gray-800 mb-4">Bienvenido a NFT Latino XYZ</h1>
+        <p class="text-base text-gray-600 mb-2">Por favor inicia sesión</p>
+        <p class="text-sm text-gray-600 mb-6">
+          ¿No tienes una cuenta?
+          <a routerLink="/register" class="text-blue-600 hover:underline">Regístrate gratis</a>
+        </p>
+
+        <!-- Botones de redes sociales -->
+        <div class="flex gap-4 justify-center mb-6">
+          <button class="flex items-center justify-center w-12 h-12 border rounded-full hover:bg-gray-200" (click)="loginWithGoogle()">
+            <img src="assets/icons/google_icon.png" alt="Google" class="w-6 h-6">
+          </button>
+          <button class="flex items-center justify-center w-12 h-12 border rounded-full hover:bg-gray-200">
+            <img src="assets/icons/apple_icon.png" alt="Apple" class="w-6 h-6">
+          </button>
+        </div>
+
+        <!-- Separador -->
+        <div class="flex items-center gap-2 text-gray-600 mb-6">
+          <hr class="flex-1 border-t border-gray-400">
+          <span class="text-sm">O</span>
+          <hr class="flex-1 border-t border-gray-400">
+        </div>
+
+        <!-- Formulario -->
+        <form [formGroup]="loginForm" class="flex flex-col gap-4" (ngSubmit)="onSubmit()">
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-600 mb-1">Correo electrónico</label>
+            <input 
+              type="email" 
+              id="email" 
+              placeholder="Ingrese aquí su correo electrónico" 
+              formControlName="email"
+              required 
+              class="w-full px-4 py-3 border rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500">
+          </div>
+          <div>
+            <label for="password" class="block text-sm font-medium text-gray-600 mb-1">Contraseña</label>
+            <div class="relative">
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                id="password"
+                placeholder="Ingrese aquí su contraseña"
+                formControlName="password"
+                required
+                class="w-full px-4 py-3 border rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500"
+              >
+              <button
+                type="button"
+                class="absolute inset-y-0 right-3 flex items-center"
+                (click)="togglePasswordVisibility()"
+              >
+                <img 
+                  [src]="showPassword ? 'assets/icons/invisible.png' : 'assets/icons/visible.png'" 
+                  alt="Toggle Password" 
+                  class="w-5 h-5"
+                >
+              </button>
+            </div>
+          </div>
+          
+          <button 
+            type="submit" 
+            class="bg-gradient-to-r from-[#C59955] to-[#D4A157] px-6 py-2 rounded-full text-sm font-medium text-white hover:from-[#B58A44] hover:to-[#C5964F] hover:scale-105 transition-transform duration-300 shadow-lg">
+            Ingresar
+          </button>
+        </form>
+
+        <!-- Enlaces de pie -->
+        <div class="flex justify-between text-sm text-gray-600 mt-4">
+          <button>
+            <!-- (click)="goToCreateAccount()" -->
+            <a routerLink="/register" class="hover:underline">Crear una nueva cuenta</a>
+          </button>
+          <a href="#" class="hover:underline">¿Has olvidado la contraseña?</a>
+        </div>
       </div>
-    </form>
+    </div>
   </div>
 </div>
+
+

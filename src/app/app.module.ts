@@ -3,6 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+// Importa el módulo OAuth de angular-oauth2-oidc
+import { OAuthModule } from 'angular-oauth2-oidc';
+
+// Importa HttpClientModule para realizar peticiones HTTP
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -23,6 +29,11 @@ import { PaintSectionComponent } from './components/paint-section/paint-section.
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ArtistaSectionComponent } from './components/artista-section/artista-section.component';
 import { CartComponent } from './components/cart/cart.component';
+import { SelectRolComponent } from './components/select-rol/select-rol.component';
+import { CallbackComponent } from './callback/callback.component'; 
+// Servicios
+import { AuthGoogleService } from './auth-google.service'; // Asegúrate de importar tu servicio de autenticación
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -40,16 +51,19 @@ import { CartComponent } from './components/cart/cart.component';
     ProductCardComponent,
     PaintSectionComponent,
     ArtistaSectionComponent,
-    CartComponent
-    
+    CartComponent,
+    SelectRolComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    OAuthModule.forRoot(),  // Importa el módulo OAuth para la autenticación
+    HttpClientModule,       // Agrega HttpClientModule aquí
   ],
-  providers: [],
+  providers: [AuthGoogleService], // Agrega el servicio de autenticación
   bootstrap: [AppComponent]
 })
 export class AppModule { }

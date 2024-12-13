@@ -12,8 +12,9 @@ import { PaintSectionComponent } from './components/paint-section/paint-section.
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ArtistaSectionComponent } from './components/artista-section/artista-section.component';
 import { CartComponent } from './components/cart/cart.component';
-
-
+import { SelectRolComponent } from './components/select-rol/select-rol.component';
+import { CallbackComponent } from './callback/callback.component';
+import { ArtistaViewComponent } from './components/artista-view/artista-view.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,6 +28,9 @@ const routes: Routes = [
   {path: 'product-card',component:ProductCardComponent},
   {path: 'artista-section',component:ArtistaSectionComponent},
   {path: 'cart',component:CartComponent},
+  {path: 'select-rol',component:SelectRolComponent},
+  { path: 'callback', component: CallbackComponent },
+  { path: 'artista-view', component: ArtistaViewComponent },
   { path: '**', redirectTo: '' }
 ];
 
