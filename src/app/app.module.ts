@@ -31,6 +31,7 @@ import { ArtistaSectionComponent } from './components/artista-section/artista-se
 import { CartComponent } from './components/cart/cart.component';
 import { SelectRolComponent } from './components/select-rol/select-rol.component';
 import { CallbackComponent } from './callback/callback.component'; 
+import { ArtistaViewComponent } from './components/artista-view/artista-view.component';  
 // Servicios
 import { AuthGoogleService } from './auth-google.service'; // Asegúrate de importar tu servicio de autenticación
 import { from } from 'rxjs';
@@ -53,7 +54,8 @@ import { from } from 'rxjs';
     ArtistaSectionComponent,
     CartComponent,
     SelectRolComponent,
-    CallbackComponent
+    CallbackComponent,
+    ArtistaViewComponent
   ],
   imports: [
     BrowserModule,

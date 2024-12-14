@@ -18,6 +18,7 @@ import { ArtistaViewComponent } from './components/artista-view/artista-view.com
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'estilos', component: EstilosComponent },
   { path: 'artistas', component: ArtistasComponent },
   { path: 'contactos', component: ContactosComponent },
@@ -31,7 +32,8 @@ const routes: Routes = [
   {path: 'select-rol',component:SelectRolComponent},
   { path: 'callback', component: CallbackComponent },
   { path: 'artista-view', component: ArtistaViewComponent },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({

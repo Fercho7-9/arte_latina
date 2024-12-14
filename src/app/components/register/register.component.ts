@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user/user.service';
-import { Router } from '@angular/router'; // Importa el Router
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +16,7 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private router: Router // Inyecta el Router
+    private router: Router
   ) {
     this.registerForm = this.fb.group(
       {
@@ -25,7 +25,7 @@ export class RegisterComponent {
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', [Validators.required]],
         nacionalidad: ['', [Validators.required]],
-        rol: ['usuario', [Validators.required]], // Valor predeterminado 'artista'
+        rol: ['usuario', [Validators.required]],
       },
       { validator: this.passwordMatchValidator }
     );
@@ -41,20 +41,20 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       const formData = this.registerForm.value;
 
-      // Usar el servicio para registrar al usuario
       this.userService.register(formData).subscribe(
         (response) => {
+          localStorage.setItem('userId', response.userId);
           this.successMessage = 'Usuario registrado con éxito.';
           this.errorMessage = null;
 
-          // Redirigir a select-rol después de un registro exitoso
           setTimeout(() => {
             this.router.navigate(['/select-rol']);
-          }, 2000); // Retardo opcional para mostrar el mensaje
+          }, 2000);
         },
         (error) => {
           this.successMessage = null;
-          this.errorMessage = 'Error al registrar el usuario: ' + error.message;
+          this.errorMessage =
+            'Error al registrar el usuario: ' + (error?.message || 'Error desconocido');
         }
       );
     } else {

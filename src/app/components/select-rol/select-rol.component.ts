@@ -1,29 +1,39 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-select-rol',
   templateUrl: './select-rol.component.html',
-  styleUrls: ['./select-rol.component.css']
+  styleUrls: ['./select-rol.component.css'],
 })
 export class SelectRolComponent {
-  selectedRole: string = '';
+  successMessage: string | null = null;
+  errorMessage: string | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   selectRole(role: string): void {
-    this.selectedRole = role;
-    console.log('Rol seleccionado:', this.selectedRole);
-
-    // ID del usuario actual (puedes ajustarlo según cómo manejes la autenticación)
     const userId = localStorage.getItem('userId');
 
-    // Enviar la solicitud al servidor para actualizar el rol
-    this.http
-      .patch('http://localhost:3000/api/users/update-role', { userId, role })
-      .subscribe({
-        next: (response) => console.log('Rol actualizado:', response),
-        error: (error) => console.error('Error al actualizar el rol:', error)
-      });
+    if (!userId) {
+      this.errorMessage = 'No se encontró el ID de usuario. Por favor, inicia sesión.';
+      return;
+    }
+
+    this.userService.updateRole(userId, role).subscribe(
+      () => {
+        this.successMessage = 'Rol actualizado con éxito.';
+        this.errorMessage = null;
+
+        const targetRoute = role === 'usuario' ? '/home' : '/artista-view';
+        this.router.navigate([targetRoute]);
+      },
+      (error) => {
+        this.successMessage = null;
+        this.errorMessage =
+          'Error al actualizar el rol: ' + (error?.message || 'Error desconocido');
+      }
+    );
   }
 }
